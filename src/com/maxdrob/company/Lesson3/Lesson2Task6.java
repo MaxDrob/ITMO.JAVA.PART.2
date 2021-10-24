@@ -25,7 +25,7 @@ public class Lesson2Task6 {
             return buffer1;
         }
 
-        // уже отсортирован.
+        // Сортировка
         int middle = startIndex + (endIndex - startIndex) / 2;
         int[] sorted1 = mergesortInner(buffer1, buffer2, startIndex, middle);
         int[] sorted2 = mergesortInner(buffer1, buffer2, middle, endIndex);
