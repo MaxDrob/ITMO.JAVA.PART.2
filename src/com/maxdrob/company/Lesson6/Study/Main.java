@@ -1,4 +1,4 @@
-package com.maxdrob.company;
+package com.maxdrob.company.Lesson6.Study;
 
 public class Main {
 
