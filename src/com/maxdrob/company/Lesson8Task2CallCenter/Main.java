@@ -1,4 +1,4 @@
-package Lesson8Task2CallCenter;
+package com.maxdrob.company.Lesson8Task2CallCenter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +10,7 @@ import static java.lang.Integer.parseInt;
 
 public class Main {
 
-    static BlockingQueue<Call> respondantQueue = new ArrayBlockingQueue<>(20);
+    static BlockingQueue<Call> respondentQueue = new ArrayBlockingQueue<>(20);
     static BlockingQueue<Call> directorQueue = new ArrayBlockingQueue<>(20);
 
     static List<Manager> managers = Arrays.asList(new Manager("Manager - 1"), new Manager("Manager - 2"));
@@ -20,11 +20,11 @@ public class Main {
     }
 
     void operate() throws InterruptedException {
-        Arrays.asList(new Respondant("Respondant - 1"), new Respondant("Respondant - 2"));
-        Arrays.asList(new Director("The Director"));
+        Arrays.asList(new Respondent("Менеджер - 1"), new Respondent("Менеджер - 2"));
+        Arrays.asList(new Director("Управляющий"));
 
-        System.out.println("Enter values representing call in the format: 0,25.");
-        System.out.println("First value is level required, second value is call duration.");
+        System.out.println("Значение, определяющее проложительность вызова и кому он будет адресован: 0,25.");
+        System.out.println("Первое значение представляет уровен отвечающего (менеджер 1,2, Управляющий), второе значение выводит продолжительность вызова.");
         Scanner scanner = new Scanner(System.in);
         while (true) {
             String s = scanner.nextLine();
@@ -40,7 +40,7 @@ public class Main {
     }
 
     private void dispatchCall(Call call) throws InterruptedException {
-        respondantQueue.put(call);
+        respondentQueue.put(call);
     }
 }
 
@@ -60,19 +60,19 @@ class Call {
 
     @Override
     public String toString() {
-        return "Call{" + "id=" + id + ", duration(sec)=" + durationInSeconds + ", level=" + level + '}';
+        return "Звонок {" + "id=" + id + ", продолжительность =" + durationInSeconds + ",уровень l=" + level + '}';
     }
 }
 
-class Respondant {
+class Respondent {
     String name;
 
-    public Respondant(String name) {
+    public Respondent(String name) {
         this.name = name;
         new Thread(() -> {
             while (true) {
                 try {
-                    Call call = Main.respondantQueue.take();
+                    Call call = Main.respondentQueue.take();
                     if (call.level == 0) {
                         System.out.println(name + " handling call: " + call);
                         Thread.sleep(call.durationInSeconds * 1000);
@@ -108,7 +108,7 @@ class Manager {
             try {
                 isBusy = true;
                 if (call.level == 1) {
-                    System.out.println(name + " handling call: " + call);
+                    System.out.println(name + " принимает звонок: " + call);
                     Thread.sleep(call.durationInSeconds * 1000);
                 } else {
                     Main.directorQueue.put(call);
@@ -129,7 +129,7 @@ class Director {
                 try {
                     Call call = Main.directorQueue.take();
                     System.out.println(name + " handling call: " + call);
-                    Thread.sleep(call.durationInSeconds * 1000 / 4); // Director handles calls 4 times faster!
+                    Thread.sleep(call.durationInSeconds * 1000 / 4); // Управляющий быстрее всех обрабатывает звонки
                 } catch (InterruptedException ignored) {}
             }
         }).start();
