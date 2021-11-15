@@ -1,4 +1,4 @@
-package com.maxdrob.company.Lesson11.Task1;
+package com.maxdrob.company.Leson11.Lesson11Task2;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

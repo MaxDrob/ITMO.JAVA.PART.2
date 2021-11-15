@@ -1,4 +1,4 @@
-package com.maxdrob.company.Lesson11Task2;
+package com.maxdrob.company.Leson11.Lesson11Task2;
 
 import java.io.FileWriter;
 import java.io.IOException;
