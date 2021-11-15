@@ -1,4 +1,4 @@
-package com.maxdrob.company.Leson11.Lesson11Task2;
+package com.maxdrob.company.Lesson11.Lesson11Task2;
 
 import java.io.IOException;
 
