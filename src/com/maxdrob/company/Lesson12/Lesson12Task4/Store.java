@@ -1,4 +1,4 @@
-package com.maxdrob.company.Lesson12.Lesson12Task2;
+package com.maxdrob.company.Lesson12.Lesson12Task4;
 
 public class Store
 {

@@ -1,4 +1,4 @@
-package com.maxdrob.company.Lesson12.Lesson12Task2;
+package com.maxdrob.company.Lesson12.Task2;
 
 public class ThreadsTask2 {
 
