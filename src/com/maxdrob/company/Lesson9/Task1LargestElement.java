@@ -9,7 +9,7 @@ public class Task1LargestElement
 
     }
 
-    public static int LargestElement(int[][] array) throws Exception {
+    public static int LargestElement(int[][] array) {
         int Largest = 0;
         for (int[] ints : array) {
             try {
