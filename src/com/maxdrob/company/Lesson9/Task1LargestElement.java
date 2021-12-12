@@ -2,25 +2,28 @@ package com.maxdrob.company.Lesson9;
 
 public class Task1LargestElement
 {
-    public static void main(String[] args)
-    {
-        int[][] data ={ {9,2,15,7,11},{68,132,16,89,5} };
+    public static void main(String[] args) throws Exception {
+        int[][] sampleArray = { { 2, 8, 3, -1 }, { 7, 2, -2, 4 } };
+        int Largest = LargestElement(sampleArray);
+        System.out.println(Largest);
 
+    }
 
-        int large = data[0][0];
-
-        for(int i =0 ; i < data.length ; i++)
-        {
-            for(int j =0 ; j < data[i].length ; j++)
-            {
-                if(large < data[i][j])
-                {
-                    large= data[i][j]; // наибольший элемент
-
+    public static int LargestElement(int[][] array) throws Exception {
+        int Largest = 0;
+        for (int[] ints : array) {
+            try {
+                for (int j = 1; j < ints.length; j++) {
+                    if (ints[j] > ints[j - 1] && ints[j] > Largest) {
+                        Largest = ints[j];
+                    }
                 }
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
             }
         }
-
-        System.out.println("Largest Element :" + large);
+        System.out.println("Largest Element :" );
+        return Largest;
     }
+
 }
